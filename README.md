@@ -6,6 +6,10 @@ It is designed to be simple, expressive, and beginner-friendly while still suppo
 
 ---
 
+![banner](/Pluck Graphics/Pluck banner.png)
+
+---
+
 # Features
 
 ## Core Language Features
