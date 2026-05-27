@@ -1,12 +1,11 @@
 # PLUCK
-
 PLUCK is a lightweight interpreted scripting language written in Python.
 
 It is designed to be simple, expressive, and beginner-friendly while still supporting core programming language features such as functions, loops, conditionals, collections, and modular syntax.
 
 ---
 
-![banner](/Pluck Graphics/Pluck banner.png)
+<img src="/Pluck Graphics/Pluck banner.png">
 
 ---
 
