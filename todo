@@ -1,0 +1,282 @@
+# -------------------- PLUCK LANGUAGE TODO --------------------#
+
+# ============================================================#
+# CORE LANGUAGE FEATURES
+# ============================================================#
+
+## Expressions & Arithmetic
+- basic arithmetic operations (+, -, *, /) @done
+- operator precedence @done
+- parentheses support @done
+- unary operators (-x, +x) @done
+- modulo operator (%) @done
+- exponent operator (**) @done
+
+## Variables
+- variable assignment @done
+- variable reassignment @done
+- variable access @done
+- variable scope improvements
+- constants / immutable variables
+
+## Data Types
+### Numbers
+- integers @done
+- floating point numbers @done
+- negative numbers @done
+
+### Strings
+- string literals @done
+- string concatenation
+- escape characters (\n, \t)
+- multiline strings
+- string interpolation
+
+### Booleans
+- true/false values @done
+- comparison operators @done
+    - ?= @done
+    - != @done
+    - < @done
+    - > @done
+    - <= @done
+    - >= @done
+- logical operators
+    - and
+    - or
+    - not
+
+# ============================================================#
+# CONTROL FLOW
+# ============================================================#
+
+## Conditional Statements
+- if statements @done
+- elif statements @done
+- else statements @done
+- nested conditionals @done
+- ternary expressions
+
+## Loops
+### While Loops
+- while loops @done
+- break statement
+- continue statement
+
+### For Loops
+- for loops @done
+- custom step values
+- foreach loops
+- iterator support
+
+# ============================================================#
+# FUNCTIONS
+# ============================================================#
+
+## Builtin Functions
+- basic built in functions @done
+- basic input/output @done
+- length() @done
+- int() @done
+- str() @done
+- float() @done
+
+## User Functions
+- function definitions @done
+- function parameters @done
+- local variable scope @done
+- return statements
+- recursion
+- anonymous/lambda functions
+- default parameters
+- variadic arguments (*args style)
+
+# ============================================================#
+# COLLECTIONS
+# ============================================================#
+
+## Lists / Arrays
+- create lists @done
+- access list elements @done
+- modify list elements @done
+- append @done
+- remove elements
+- pop elements
+- insert elements
+- nested lists
+- list length
+- list iteration
+- slicing
+- list comprehensions
+
+## Dictionaries / Maps
+- create dictionaries
+- access values by key
+- modify dictionary values
+- remove keys
+- iterate over dictionaries
+
+# ============================================================#
+# LANGUAGE STRUCTURE
+# ============================================================#
+
+## Comments
+- single line comments @done
+- multiline comments
+
+## Modules
+- modules and imports
+- export system
+- standard library
+- package system
+
+## Error Handling
+- syntax error improvements
+- runtime error improvements
+- custom error messages
+- try/catch system
+
+# ============================================================#
+# OBJECT ORIENTED PROGRAMMING
+# ============================================================#
+
+## Classes
+- class definitions
+- object creation
+- properties
+- methods
+- constructors
+- inheritance
+- static methods
+
+# ============================================================#
+# INTERPRETER IMPROVEMENTS
+# ============================================================#
+
+## Lexer
+- token position tracking
+- line/column error reporting
+- better lexer architecture
+
+## Parser
+- parser cleanup/refactor
+- precedence parser
+- AST optimization
+- parser error recovery
+
+## Interpreter
+- scope stack
+- function call stack
+- memory management
+- performance improvements
+
+# ============================================================#
+# ADVANCED FEATURES
+# ============================================================#
+
+## Language Features
+- pattern matching
+- enums
+- destructuring
+- optional chaining
+- pipe operator
+
+## Functional Features
+- higher order functions
+- closures
+- currying
+
+## Async Features
+- coroutines
+- async/await
+
+# ============================================================#
+# STANDARD LIBRARY
+# ============================================================#
+
+## Math
+- abs()
+- min()
+- max()
+- random()
+- round()
+
+## Strings
+- split()
+- join()
+- replace()
+- upper()
+- lower()
+
+## File System
+- read files
+- write files
+- append files
+
+## Time
+- current time
+- sleep()
+
+# ============================================================#
+# TOOLING
+# ============================================================#
+
+## Documentation
+- syntax documentation
+- builtin function documentation
+- examples section
+- language specification
+
+## Developer Tools
+- REPL
+- debugger
+- package manager
+- formatter
+- linter
+
+## Editor Support
+- syntax highlighting
+- VSCode extension
+- autocomplete
+
+# ============================================================#
+# COMPILER / VM FUTURE
+# ============================================================#
+
+## Bytecode
+- bytecode generation
+- virtual machine
+- optimization passes
+
+## Native Compilation
+- transpiler
+- LLVM backend
+- executable generation
+
+# ============================================================#
+# PROJECT POLISH
+# ============================================================#
+
+## Branding
+- official syntax style
+- language logo
+- website
+- GitHub repository
+
+## Examples & Showcase
+- calculator example
+- text adventure game
+- todo app
+- scripting examples
+
+# ============================================================#
+# LONG TERM GOALS
+# ============================================================#
+
+- self-hosting parser
+- self-hosting compiler
+- garbage collector
+- JIT compilation
+- package ecosystem
+- community documentation
+- plugin system
