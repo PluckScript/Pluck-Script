@@ -1,8 +1,6 @@
-x=0
-while x <= 10{
-    if x ?= 8{
-        continue
-    }
-    out(x)
-    x = x+1
-} //continue not working
+fn add(a,b){
+    x=a+b
+    return(x)
+}
+
+out(add(1,2))

@@ -21,3 +21,17 @@ myName = "Jonah"
 myAge = 14
 greet(myName, myAge)
 ```
+
+## Reterning a value
+
+Returning a value allows you to input data into a function, process it, and then return a value without needing to output anything.
+
+```pluck
+fn add(a, b){
+    x = a + b
+    return(x)
+}
+
+z = add(1, 2)
+// z = 3 but nothing was outputed
+```

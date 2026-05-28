@@ -35,3 +35,20 @@ for x = 1; 3 {
     }
 }
 ```
+
+## Break
+
+breaking alows you to break out of a loop and not continue completely ignorring the condition.
+
+```pluck
+for i = 0;5{
+    i = i+1
+    out(i)
+    if i ?= 3{
+        break
+    }
+}
+// output 1
+          2
+          3
+```
