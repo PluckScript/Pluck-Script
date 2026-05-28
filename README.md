@@ -5,6 +5,10 @@ It is designed to be simple, expressive, and beginner-friendly while still suppo
 
 ---
 
+# You are able to preveiw some code by checking the examples folder!
+
+---
+
 <img src="/Pluck Graphics/Pluck banner.png">
 
 ---
