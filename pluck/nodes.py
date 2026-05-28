@@ -155,3 +155,25 @@ class ReturnNode:
 class BreakNode:
     def __repr__(self):
         return "BREAK"
+
+class ImportNode:
+
+    def __init__(self, filename, alias=None):
+
+        self.filename = filename
+        self.alias = alias
+
+    def __repr__(self):
+
+        if self.alias:
+            return f'IMPORT "{self.filename}" AS {self.alias}'
+
+        return f'IMPORT "{self.filename}"'
+    
+class ModuleFunctionCallNode:
+
+    def __init__(self, module_name, function_name, arguments):
+
+        self.module_name = module_name
+        self.function_name = function_name
+        self.arguments = arguments

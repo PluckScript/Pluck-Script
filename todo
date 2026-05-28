@@ -85,7 +85,7 @@
 - function definitions @done
 - function parameters @done
 - local variable scope @done
-- return statements
+- return statements @done
 - recursion
 - anonymous/lambda functions
 - default parameters
@@ -95,7 +95,7 @@
 # COLLECTIONS
 # ============================================================#
 
-## Lists / Arrays
+## Lists
 - create lists @done
 - access list elements @done
 - modify list elements @done
@@ -125,7 +125,8 @@
 - multiline comments
 
 ## Modules
-- modules and imports
+- modules and imports @done
+- create module files
 - export system
 - standard library
 - package system
@@ -133,7 +134,7 @@
 ## Error Handling
 - syntax error improvements
 - runtime error improvements
-- custom error messages
+- custom error messages @done
 - try/catch system
 
 # ============================================================#

@@ -1,6 +1,8 @@
 from pluck.tokens import *
 from pluck.nodes import *
 from pluck.errors import *
+from pluck.lexer import *
+from pluck.parser import *
 from pluck.builtins import builtins
 
 class Interpreter(builtins):
@@ -9,9 +11,11 @@ class Interpreter(builtins):
 
         self.parser = parser
 
-        self.variables = {}
+        self.scope = [{}]
 
         self.functions = {}
+
+        self.modules = {}
 
         self.builtins = {
             "out": self.builtin_out,
@@ -23,12 +27,18 @@ class Interpreter(builtins):
         }
 
     def visit(self, node):
-
         method_name = f"visit_{type(node).__name__}"
-
-        method = getattr(self, method_name)
-
-        return method(node)
+        method = getattr(self, method_name, None)
+        if method is None:
+            raise PluckError(f"No visit method for node type: {type(node).__name__}")
+        try:
+            return method(node)
+        except PluckError as e:
+            print(e)
+            raise
+        except Exception as e:
+            print(f"Interpreter error: {e}")
+            raise
 
     
     def visit_NumberNode(self, node):
@@ -68,10 +78,11 @@ class Interpreter(builtins):
 
     def visit_VarAccessNode(self, node):
 
-        if node.var_name not in self.variables:
-            raise Exception(f"Undefined variable: {node.var_name}")
+        for scope in reversed(self.scope):
+            if node.var_name in scope:
+                return scope[node.var_name]
 
-        return self.variables[node.var_name]
+        raise PluckError(f"Undefined variable: {node.var_name}")
 
     def visit_VarAssignNode(self, node):
 
@@ -83,7 +94,7 @@ class Interpreter(builtins):
             return value
         else:
             value = self.visit(node.value_node)
-            self.variables[node.var_name] = value
+            self.current_scope()[node.var_name] = value
             return value
 
     def visit_FunctionCallNode(self, node):
@@ -118,7 +129,9 @@ class Interpreter(builtins):
             for arg in node.arguments:
                 arguments.append(self.visit(arg))
 
-            previous_variables = self.variables.copy()
+            newScope = {}
+
+            self.scope.append(newScope)
 
             for parameter, value in zip(
                 function.parameters,
@@ -126,7 +139,7 @@ class Interpreter(builtins):
             ):
             
 
-                self.variables[parameter] = value
+                self.current_scope()[parameter] = value
 
             try:
                 result = self.visit(function.body)
@@ -135,13 +148,12 @@ class Interpreter(builtins):
 
                 result = return_value.value
 
-            self.variables = previous_variables
+            finally:
+                self.scope.pop()
 
             return result
 
-        raise Exception(
-            f"Unknown function: {node.name}"
-        )
+        raise PluckError(f"Unknown function: {node.name}")
 
     def visit_CompareNode(self, node):
 
@@ -220,3 +232,15 @@ class Interpreter(builtins):
     
     def visit_BreakNode(self, node):
         raise breakException()
+    
+    def current_scope(self):
+        return self.scope[-1]
+    
+    def visit_ImportNode(self, node):
+        with open(f"stdlib/{node.filename}.plk", "r") as f:
+            code = f.read()
+
+        lexer = Lexer(code)
+        parser = Parser(lexer)
+        tree = parser.statements()
+        return self.visit(tree)

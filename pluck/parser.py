@@ -1,5 +1,6 @@
 from pluck.tokens import *
 from pluck.nodes import *
+from pluck.errors import *
 
 class Parser:
 
@@ -20,7 +21,9 @@ class Parser:
         if self.current_token.type == token_type:
             self.advance()
         else:
-            raise Exception(f"Expected {token_type}, got {self.current_token.type}")
+            raise PluckError(f"Expected {token_type}, got {self.current_token.type}", 
+                             self.current_token.line, 
+                             self.current_token.column)
 
     def factor(self):
 
@@ -86,7 +89,9 @@ class Parser:
                     var_name = IndexAccessNode(var_name, index)
 
                 else:
-                    raise Exception("only list indexing allowed in assignment target")
+                    raise PluckError(f"only list indexing allowed in assignment target", 
+                             self.current_token.line, 
+                             self.current_token.column)
 
             return node
 
@@ -126,9 +131,9 @@ class Parser:
                         )
 
                     else:
-                        raise Exception(
-                            "Cannot call non-function"
-                        )
+                        raise PluckError(f"Cannot call non-function", 
+                             self.current_token.line, 
+                             self.current_token.column)
 
                 elif self.current_token.type == INDEX_ACCESS:
 
@@ -302,6 +307,8 @@ class Parser:
             elif self.current_token.type == BREAK:
                 self.eat(BREAK)
                 statement = BreakNode()
+            elif self.current_token.type == IMPORT:
+                statement = self.import_statement()
             else:
                 statement = self.assignment()
 
@@ -347,7 +354,7 @@ class Parser:
 
             node = CompareNode(node, token, self.expr())
 
-            return node
+        return node
 
     def if_statement(self):
 
@@ -596,3 +603,13 @@ class Parser:
         self.eat(RBRACE)
 
         return FunctionDefinitionNode(function_name, parameters, StatementsNode(statements))
+    
+    def import_statement(self):
+
+        self.eat(IMPORT)
+
+        filename = self.current_token.value
+
+        self.eat(STRING)
+
+        return ImportNode(filename)

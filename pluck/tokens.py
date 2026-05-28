@@ -58,11 +58,15 @@ EXPONENT = "EXPONENT"
 RETURN = "RETURN"
 BREAK = "BREAK"
 
+IMPORT = "IMPORT"
+
 
 class Token:
-    def __init__(self, type_, value=None):
+    def __init__(self, type_, value=None, line = 1, column = 1):
         self.type = type_
         self.value = value
+        self.line = line
+        self.column = column
 
     def __repr__(self):
         return f"{self.type}:{self.value}"

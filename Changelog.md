@@ -25,3 +25,16 @@
 
 ### Improved:
 - Updated some of the documentation
+
+## v0.2.0
+### Added:
+- Global and local scope
+- Exception handling improvements throughout the codebase
+- Documentation updates and new documentation files
+- Break function
+- Return function
+
+### Improved:
+- Parser logic for logical expressions (fixed recursion issues)
+- Error messages and robustness
+- Code structure and maintainability
