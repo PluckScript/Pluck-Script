@@ -1,0 +1,5 @@
+is_alive = true
+is_admin = false
+
+out(is_alive)
+out(is_admin)

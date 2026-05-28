@@ -1,0 +1,5 @@
+name = "Jonah"
+age = 14
+
+out(name)
+out(age)

@@ -1,0 +1,8 @@
+fn greet(name) {
+
+    out("Hello", name)
+
+}
+
+greet("PLUCK")
+greet("World")

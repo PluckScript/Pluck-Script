@@ -1,0 +1,11 @@
+todos = @{"Code", "Test", "Push to GitHub"}@
+
+todos::append("Sleep")
+
+out(todos)
+
+for i = 0; length(todos) - 1 {
+
+    out(todos::(i))
+
+}

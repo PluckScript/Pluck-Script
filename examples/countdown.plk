@@ -1,0 +1,11 @@
+count = 10
+
+while count > 0 {
+
+    out(count)
+
+    count = count - 1
+
+}
+
+out("Liftoff!")

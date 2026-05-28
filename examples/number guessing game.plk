@@ -1,0 +1,14 @@
+secret = 7
+
+guess = int(input("Guess number: "))
+
+if guess ?= secret {
+
+    out("Correct!")
+
+}
+else {
+
+    out("Wrong!")
+
+}
