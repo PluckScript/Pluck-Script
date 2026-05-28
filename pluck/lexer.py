@@ -93,6 +93,8 @@ class Lexer:
             "fn": FN,
             "true": TRUE,
             "false": FALSE,
+            "return": RETURN,
+            "break": BREAK,
         }
 
         if result in KEYWORDS:

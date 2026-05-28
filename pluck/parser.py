@@ -295,6 +295,13 @@ class Parser:
                 statement = self.for_statement()
             elif self.current_token.type == FN:
                 statement = self.function_definition()
+            elif self.current_token.type == RETURN:
+                self.eat(RETURN)
+                value = self.expr()
+                statement = ReturnNode(value)
+            elif self.current_token.type == BREAK:
+                self.eat(BREAK)
+                statement = BreakNode()
             else:
                 statement = self.assignment()
 
@@ -362,6 +369,13 @@ class Parser:
                 statement = self.while_statement()
             elif self.current_token.type == FOR:
                 statement = self.for_statement()
+            elif self.current_token.type == RETURN:
+                self.eat(RETURN)
+                value = self.expr()
+                statement = ReturnNode(value)
+            elif self.current_token.type == BREAK:
+                self.eat(BREAK)
+                statement = BreakNode()
             else:
                 statement = self.assignment()
 
@@ -394,6 +408,13 @@ class Parser:
                         statement = self.while_statement()
                     elif self.current_token.type == FOR:
                         statement = self.for_statement()
+                    elif self.current_token.type == RETURN:
+                        self.eat(RETURN)
+                        value = self.expr()
+                        statement = ReturnNode(value)
+                    elif self.current_token.type == BREAK:
+                        self.eat(BREAK)
+                        statement = BreakNode()
                     else:
                         statement = self.assignment()
                     elif_statements.append(statement)
@@ -414,6 +435,13 @@ class Parser:
                         statement = self.while_statement()
                     elif self.current_token.type == FOR:
                         statement = self.for_statement()
+                    elif self.current_token.type == RETURN:
+                        self.eat(RETURN)
+                        value = self.expr()
+                        statement = ReturnNode(value)
+                    elif self.current_token.type == BREAK:
+                        self.eat(BREAK)
+                        statement = BreakNode()
                     else:
                         statement = self.assignment()
                     else_statements.append(statement)
@@ -446,6 +474,13 @@ class Parser:
                 statement = self.while_statement()
             elif self.current_token.type == FOR:
                 statement = self.for_statement()
+            elif self.current_token.type == RETURN:
+                self.eat(RETURN)
+                value = self.expr()
+                statement = ReturnNode(value)
+            elif self.current_token.type == BREAK:
+                self.eat(BREAK)
+                statement = BreakNode()
             else:
                 statement = self.assignment()
 
@@ -487,6 +522,13 @@ class Parser:
                 statement = self.while_statement()
             elif self.current_token.type == FOR:
                 statement = self.for_statement()
+            elif self.current_token.type == RETURN:
+                self.eat(RETURN)
+                value = self.expr()
+                statement = ReturnNode(value)
+            elif self.current_token.type == BREAK:
+                self.eat(BREAK)
+                statement = BreakNode()
             else:
                 statement = self.assignment()
 
@@ -536,6 +578,13 @@ class Parser:
                 statement = self.while_statement()
             elif self.current_token.type == FOR:
                 statement = self.for_statement()
+            elif self.current_token.type == RETURN:
+                self.eat(RETURN)
+                value = self.expr()
+                statement = ReturnNode(value)
+            elif self.current_token.type == BREAK:
+                self.eat(BREAK)
+                statement = BreakNode()
             else:
                 statement = self.assignment()
 

@@ -1,5 +1,6 @@
 from pluck.tokens import *
 from pluck.nodes import *
+from pluck.errors import *
 from pluck.builtins import builtins
 
 class Interpreter(builtins):
@@ -123,10 +124,16 @@ class Interpreter(builtins):
                 function.parameters,
                 arguments
             ):
+            
 
                 self.variables[parameter] = value
 
-            result = self.visit(function.body)
+            try:
+                result = self.visit(function.body)
+
+            except returnException as return_value:
+
+                result = return_value.value
 
             self.variables = previous_variables
 
@@ -170,16 +177,22 @@ class Interpreter(builtins):
             return self.visit(node.else_body)
 
     def visit_WhileNode(self, node):
-
         while self.visit(node.condition):
-            self.visit(node.body)
+            try:
+                self.visit(node.body)
+            except breakException:
+                break
+                
 
     def visit_ForNode(self, node):
         start = self.visit(node.start_value)
         end = self.visit(node.end_value)
         for i in range(start, end + 1):
-            self.variables[node.var_name] = i
-            self.visit(node.body)
+            try:
+                self.variables[node.var_name] = i
+                self.visit(node.body)
+            except breakException:
+                break
 
     def visit_FunctionDefinitionNode(self, node):
 
@@ -196,10 +209,14 @@ class Interpreter(builtins):
         return list_obj[idx]
 
     def visit_StatementsNode(self, node):
-
         result = None
-
         for statement in node.statements:
             result = self.visit(statement)
-
         return result
+    
+    def visit_ReturnNode(self, node):
+        value = self.visit(node.value)
+        raise returnException(value)
+    
+    def visit_BreakNode(self, node):
+        raise breakException()

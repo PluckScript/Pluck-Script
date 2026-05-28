@@ -144,3 +144,14 @@ class IndexAccessNode:
         self.index_node = index_node
     def __repr__(self):
         return f"{self.list_node}::({self.index_node})"
+    
+class ReturnNode:
+    def __init__(self, value):
+        self.value = value
+
+    def __repr__(self):
+        return f"RETURN {self.value}"
+    
+class BreakNode:
+    def __repr__(self):
+        return "BREAK"
